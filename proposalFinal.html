@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systems Architecture & Growth Proposal - Heritage Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #c59d5f;
+      --accent-light: #f5f1ea;
+      --secondary: #64748b;
+      --text: #334155;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Outfit", sans-serif;
+      color: var(--primary);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 20px auto;
+      background: var(--white);
+      padding: 20mm 25mm;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      position: relative;
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+    }
+
+    .logo-area h1 {
+      font-size: 19px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-area span {
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 11px;
+      color: var(--secondary);
+    }
+
+    .toc {
+      background: var(--bg);
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .toc h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--secondary);
+      margin: 0;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    h2 span {
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin: 20px 0 10px 0;
+      color: var(--primary);
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .feature-list li {
+      padding-left: 20px;
+      position: relative;
+      font-size: 12.5px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .deliverable-card {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .deliverable-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .deliverable-details {
+      font-size: 11px;
+      color: var(--secondary);
+      line-height: 1.4;
+    }
+
+    .flow-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .flow-step {
+      text-align: center;
+      padding: 10px;
+      background: var(--bg);
+      border-radius: 6px;
+    }
+
+    .flow-num {
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .flow-text {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .flow-sub {
+      font-size: 9px;
+      color: var(--secondary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 12px;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      text-align: left;
+      padding: 10px;
+    }
+
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .total-row {
+      background: var(--accent-light);
+      font-weight: 700;
+    }
+
+    .roadmap-container {
+      border-left: 2px solid var(--border);
+      padding-left: 25px;
+      margin-left: 5px;
+    }
+
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .roadmap-item::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20mm;
+      left: 25mm;
+      right: 25mm;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: var(--secondary);
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        padding: 20mm 25mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      footer {
+        bottom: 10mm;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- PAGE 1: STRATEGY & ARCHITECTURE -->
+  <div class="page">
+    <header>
+      <div class="logo-area">
+        <h1>Adewale Olalekan <span>Oni</span></h1>
+        <p style="margin-top: 2px; font-size: 12px; font-weight: 500">Digital Systems Architect</p>
+      </div>
+      <div class="contact-info">
+        <p>adewaler3p@gmail.com | 09037498081</p>
+        <p>Lagos, Nigeria</p>
+      </div>
+    </header>
+
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li>01 Strategy and Architecture</li>
+        <li>02 User Experience and Future Scale</li>
+        <li>03 Deliverables and Financials</li>
+        <li>04 Terms</li>
+      </ul>
+    </div>
+
+    <div id="vision">
+      <h2><span>01</span> Project Strategy & Vision</h2>
+      <p>
+        As the Heritage Community transitions from a value-driven community into a kind of professional startup, the
+        digital infrastructure must evolve beyond a simple social community. We are building a high-performance
+        <strong>System of Engagement</strong>—a foundation designed to eliminate administrative friction and automate
+        member acquisition with zero developer intervention needed for monthly updates.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Scalable Architecture:</strong> Built on enterprise WordPress with custom dynamic logic.</li>
+        <li><strong>Data Integrity:</strong> Centralized real-time logging for community oversight.</li>
+        <li><strong>Information Density:</strong> High-speed rendering for mobile-first Nigerian networks.</li>
+        <li><strong>Automation:</strong> Customized efficient code to handle registrations and redirects.</li>
+      </ul>
+    </div>
+
+    <div id="deliverables">
+      <h3>Phase 1: Core System Implementation</h3>
+      <div class="deliverable-grid">
+        <div class="deliverable-card">
+          <span class="deliverable-title">01 Landing Page</span>
+          <span class="deliverable-details">Hero countdown | Speaker Spotlight | Registration engine | Past webinars |
+            Heritage value prop.</span>
+        </div>
+        <div class="deliverable-card">
+          <span class="deliverable-title">02 Thank You Page</span>
+          <span class="deliverable-details">Success confirmation | Actionable WhatsApp redirects | 24hr expectation
+            management.</span>
+        </div>
+        <div class="deliverable-card">
+          <span class="deliverable-title">03 About & Vision</span>
+          <span class="deliverable-details">Detailed community background | Impact metrics | Strategic
+            Call-to-Action.</span>
+        </div>
+      </div>
+
+      <h3>Customized Tech Stack</h3>
+      <p style="font-size: 12px; color: var(--secondary);">We leverage a specialized stack designed for growth without
+        the bloat of standard plugins:</p>
+      <ul class="feature-list">
+        <li><strong>Dynamic Backend:</strong> Control speaker bios & webinar details via a simple admin dashboard.</li>
+        <li><strong>Custom Automation:</strong> Bespoke script to route form data to Google Sheets & auto-responder
+          emails.</li>
+        <li><strong>Security Suite:</strong> Hardened SSL, Wordfence core, and daily automated 7-day backups.</li>
+        <li><strong>Continuity Support:</strong> Including 3 months of free webinar updates and content tweaks.</li>
+      </ul>
+    </div>
+
+    <footer>
+      <span>Heritage Community — Project Proposal</span>
+      <span>Page 1 / 4</span>
+    </footer>
+  </div>
+
+  <!-- PAGE 2: USER EXPERIENCE & FUTURE SCALE -->
+  <div class="page">
+    <h2><span>02</span> User Experience & Future Scale</h2>
+
+    <h3>The Zero-Friction Registration Journey</h3>
+    <div class="flow-container">
+      <div class="flow-step">
+        <span class="flow-num">01</span>
+        <span class="flow-text">Land & Scan</span>
+        <span class="flow-sub">High-speed browsing & countdown.</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">02</span>
+        <span class="flow-text">Register</span>
+        <span class="flow-sub">Name, Email, WhatsApp (No Bloat).</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">03</span>
+        <span class="flow-text">Automate</span>
+        <span class="flow-sub">Data routes to Sheets & SMTP Email.</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">04</span>
+        <span class="flow-text">Onboard</span>
+        <span class="flow-sub">Manual WhatsApp invite from team.</span>
+      </div>
+    </div>
+
+    <div id="phases" class="roadmap-container">
+      <div class="roadmap-item">
+        <strong>Phase 2: The Business Powerhouse (Authority Stage)</strong>
+        <p>Transitioning from a landing site into a full "Organization" identity. We implement the Standard Business
+          Site architecture here.</p>
+        <ul class="feature-list" style="grid-template-columns: 1fr;">
+          <li><strong>Knowledge Archive:</strong> A dedicated repository for past sessions, each with speaker profiles
+            and summaries to prove authority.</li>
+          <li><strong>Professional Showcase:</strong> Service pages for specialized audits, consulting, and
+            industry-specific auditing.</li>
+          <li><strong>LMS Fencing:</strong> Setting up the User Registration/Login architecture and restricted content
+            sections.</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-item">
+        <strong>Phase 3: The Heritage Institute (Ecosystem Stage)</strong>
+        <p>The site transitions into a fully automated <strong>Revenue Machine</strong> for Industry Certification and
+          deep-dive practices.</p>
+        <ul class="feature-list" style="grid-template-columns: 1fr;">
+          <li><strong>Full LMS Implementation:</strong> Member-only tracks with quizzes and automatically generated PDF
+            certificates for graduates.</li>
+          <li><strong>Paid Gateway Integration:</strong> Automated registration for paid webinars via
+            Paystack/Flutterwave (N2,000+ per session).</li>
+          <li><strong>Ecosystem Hub:</strong> Selective "Job Board", Resource Marketplace for templates, and a private
+            "Founders Forum".</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <span>Heritage Community — Project Proposal</span>
+      <span>Page 2 / 4</span>
+    </footer>
+  </div>
+
+  <!-- PAGE 3: DELIVERABLES & FINANCIALS -->
+  <div class="page">
+    <h2><span>03</span> Deliverables & Financials</h2>
+
+    <h3>Post-Launch Architecture Support (Included)</h3>
+    <p><strong>We provide 3 months of technical stewardship</strong> to ensure your system runs at peak performance:</p>
+    <ul class="feature-list" style="grid-template-columns: 1fr;">
+      <li>Regular automated system backups and Security monitoring.</li>
+      <li>3 Monthly webinar content updates (3 included).</li>
+      <li>Performance audits and Priority email support for the team.</li>
+      <li>One session of CMS training for the team.</li>
+    </ul>
+
+    <h3>One-Time Project Investment (Development Fee)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Service Milestone</th>
+          <th>Allocation</th>
+          <th>Investment (NGN)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Design & Architecture</strong></td>
+          <td>65% (ACF build, UI/UX, Dynamic fields)</td>
+          <td>₦97,500</td>
+        </tr>
+        <tr>
+          <td><strong>System Integration</strong></td>
+          <td>20% (Custom automation, SMTP, Testing)</td>
+          <td>₦30,000</td>
+        </tr>
+        <tr>
+          <td><strong>Launch & Deployment</strong></td>
+          <td>15% (CMS Training, Migration, Live)</td>
+          <td>₦22,500</td>
+        </tr>
+        <tr>
+          <td><strong>Support (3-Mo Continuity Pack)</strong></td>
+          <td>Daily Backups, Security, Content Updates</td>
+          <td>₦0</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">TOTAL PROJECT INVESTMENT (One-Time)</td>
+          <td>₦150,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 11px; font-style: italic; margin-bottom: 25px;">*Clients may choose to make a full payment if
+      they so desire.</p>
+
+    <h3>Monthly Infrastructure Costs (Infrastructure Cost)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Provider</th>
+          <th>Est. Cost</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hosting (WordPress)</td>
+          <td>DomainKing Minister</td>
+          <td>₦7,000 - ₦15,000</td>
+          <td>cPanel, local support.</td>
+        </tr>
+        <tr>
+          <td>Domain Registration</td>
+          <td>DomainKing</td>
+          <td>Included</td>
+          <td>Free for 1st Year.</td>
+        </tr>
+        <tr>
+          <td>Elementor Pro</td>
+          <td>Your License</td>
+          <td>~$90(annual)</td>
+          <td>Essential for dynamic ecosystem.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 11px; color: var(--secondary); margin-bottom: 25px;">
+      <strong>Note:</strong> These infrastructure costs are external and are not bearable by the developer; they are
+      separate from the project development fees.
+    </p>
+
+    <h3>Development Roadmap (~15 Days)</h3>
+    <ul class="feature-list" style="grid-template-columns: 1fr;">
+      <li><strong>Planning (1-2 Days):</strong> Wireframes, ACF Schema, Custom Flow mapping.</li>
+      <li><strong>Build (8-12 Days):</strong> Design and component construction in Elementor.</li>
+      <li><strong>Integration & Launch (2 Days):</strong> Automation logic, SMTP, testing, and deployment.</li>
+    </ul>
+
+    <footer>
+      <span>Heritage Community — Project Proposal</span>
+      <span>Page 3 / 4</span>
+    </footer>
+  </div>
+
+  <!-- PAGE 4: ONBOARDING & TERMS -->
+  <div class="page">
+    <h2><span>04</span> Onboarding & Terms</h2>
+
+    <div id="onboarding">
+      <h3>Onboarding: Next Steps</h3>
+      <ol style="font-size: 13.5px; line-height: 2; color: var(--text); padding-left: 20px;">
+        <li><strong>Review & Response:</strong> Final feedback and answering the project questionnaire details.</li>
+        <li><strong>Strategy session:</strong> 30-minute kickoff to finalize speakers details.</li>
+        <li><strong>Securing Spot:</strong> <strong>65% initial deposit required</strong> to begin architecture build.
+        </li>
+        <li><strong>Development:</strong> Coding and design phase with updates every 3-4 days.</li>
+        <li><strong>Handover:</strong> Site live, CMS training, and documentation delivered.</li>
+      </ol>
+    </div>
+
+    <div
+      style="background: #f1f5f9; padding: 25px; border-radius: 8px; margin-top: 40px; border-left: 4px solid var(--accent);">
+      <h3 style="margin-top: 0; border: none; padding: 0;">Final Terms & Conditions</h3>
+      <p style="font-size: 14px; margin-top: 15px;">
+        <strong>Payment structure:</strong> 65% Start | 35% Final Launch. Two rounds of revisions included.
+        Timeline assumes timely feedback. IP rights transferred upon final payment.
+      </p>
+    </div>
+
+    <div style="margin-top: 80px; text-align: center;">
+      <h4 style="color: var(--accent); font-size: 22px;">Let's Architect Your Growth</h4>
+      <p style="font-size: 13px; margin-top: 10px;">Adewale Olalekan Oni — Digital Systems Architect</p>
+    </div>
+
+    <footer>
+      <span>Heritage Community — Project Proposal</span>
+      <span>Page 4 / 4</span>
+    </footer>
+  </div>
+</body>
+
+</html>

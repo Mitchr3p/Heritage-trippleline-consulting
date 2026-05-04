@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Incubation Platform - Webinar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: #1a3a6b;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a3a6b;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+
+        .register-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .register-btn:hover {
+            background: #1a3a6b;
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, #0a1929 0%, #1a3a6b 40%, #2c5aa0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 8% 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+                linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding-right: 2rem;
+        }
+
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-transform: uppercase;
+        }
+
+        .platform-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -3px;
+        }
+
+        .title-highlight {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .meta-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-value {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #fff;
+            color: #1a3a6b;
+            padding: 1.2rem 2.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: transparent;
+            color: #fff;
+            padding: 1.2rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .speaker-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .speaker-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c5aa0, #1a3a6b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .speaker-info h3 {
+            font-size: 1.3rem;
+            color: #1a3a6b;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .speaker-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .join-info {
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5aa0 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
+        .join-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .join-detail:last-child {
+            border-bottom: none;
+        }
+
+        .join-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .join-value {
+            font-weight: 700;
+        }
+
+        @media (max-width: 1200px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 5% 3rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .navbar {
+                padding: 1rem 5%;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-section">
+            <div class="logo-icon">H</div>
+            <div class="logo-text">HERITAGE TRIPPELINE CONSULTING</div>
+        </div>
+        <div class="nav-links">
+            <a href="#webinar">Webinar</a>
+            <a href="#about">About Heritage</a>
+            <button class="register-btn">Register Now</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="platform-badge">
+                    Heritage Incubation Platform
+                </div>
+                <h1 class="hero-title">
+                    PIVOTING IN <span class="title-highlight">CAREER & BUSINESS</span>
+                </h1>
+                <p class="hero-description">
+                    Join industry leaders for an immersive session on strategic career transitions and business
+                    transformation. Learn proven frameworks for pivoting with purpose.
+                </p>
+
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Date</div>
+                        <div class="meta-value">April 25, 2026</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Time</div>
+                        <div class="meta-value">10:00 AM WAT</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Format</div>
+                        <div class="meta-value">Live Webinar</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="#register" class="cta-primary">
+                        Secure Your Seat
+                        <span>→</span>
+                    </a>
+                    <a href="#about" class="cta-secondary">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-cards">
+                <div class="speaker-card">
+                    <div class="speaker-header">
+                        <div class="speaker-avatar">AO</div>
+                        <div class="speaker-info">
+                            <h3>Afolabi Oyewunmi</h3>
+                            <p>Business Accelerator with expertise in growth strategy and market expansion</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-header">
+                        <div class="speaker-avatar">JO</div>
+                        <div class="speaker-info">
+                            <h3>Joba Ojelabi</h3>
+                            <p>Chief Marketing Officer at FlashChange, specializing in brand transformation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="join-info">
+                    <h3>Join via Zoom</h3>
+                    <div class="join-detail">
+                        <span class="join-label">Meeting ID</span>
+                        <span class="join-value">850 7250 4490</span>
+                    </div>
+                    <div class="join-detail">
+                        <span class="join-label">Passcode</span>
+                        <span class="join-value">HBDAY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

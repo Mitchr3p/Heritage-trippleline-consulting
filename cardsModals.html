@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      :root {
+        --primary: #1a1a1a; /* Professional Consulting Black */
+        --accent: #d4af37; /* Authority Gold */
+        --text-gray: #555;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f4f4f4;
+        padding: 40px;
+      }
+
+      /* --- WEBINAR CARD --- */
+      .card {
+        width: 300px;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin-bottom: 50px;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 180px;
+        background: #222; /* Placeholder for Flyer/Speaker Headshot */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: bold;
+      }
+
+      .card-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .card-btn {
+        background: var(--primary);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      /* --- MODAL VISUALIZATION --- */
+      .modal-preview {
+        max-width: 800px;
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      .modal-header {
+        background: var(--primary);
+        color: var(--white);
+        padding: 25px;
+        text-align: center;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 30px;
+        padding: 30px;
+      }
+
+      /* Speaker Sidebar */
+      .speaker-sidebar {
+        border-right: 1px solid #eee;
+        padding-right: 20px;
+      }
+
+      .speaker-img {
+        width: 120px;
+        height: 120px;
+        background: #ddd;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+
+      .speaker-name {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 5px;
+      }
+
+      .speaker-bio {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        line-height: 1.5;
+      }
+
+      .social-icons {
+        margin-top: 15px;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      /* Content Section */
+      .webinar-details h3 {
+        font-size: 1rem;
+        color: var(--primary);
+        margin-top: 0;
+      }
+
+      .snippets {
+        list-style: none;
+        padding: 0;
+        font-size: 0.9rem;
+        color: var(--text-gray);
+      }
+
+      .snippets li {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .snippets li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .cta-full-video {
+        display: block;
+        margin-top: 25px;
+        background: var(--accent);
+        color: var(--primary);
+        text-align: center;
+        padding: 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Card Preview</h3>
+    <div class="card">
+      <div class="card-image">SPEAKER FLYER</div>
+      <div class="card-content">
+        <div class="card-title">Strategy Deployment 101</div>
+        <a href="#" class="card-btn">View Highlights</a>
+      </div>
+    </div>
+
+    <hr style="margin: 50px 0" />
+
+    <h3>Modal Preview</h3>
+    <div class="modal-preview">
+      <div class="modal-header">
+        <h2>Building Resilient Systems</h2>
+      </div>
+      <div class="modal-body">
+        <div class="speaker-sidebar">
+          <div class="speaker-img"></div>
+          <div class="speaker-name">Speaker Name</div>
+          <p class="speaker-bio">
+            Senior Consultant with 10+ years experience in business architecture
+            and strategy deployment.
+          </p>
+          <div class="social-icons">LinkedIn | Twitter</div>
+        </div>
+
+        <div class="webinar-details">
+          <h3>What was covered:</h3>
+          <ul class="snippets">
+            <li>Foundational systems for modern consulting.</li>
+            <li>Managing high-value lead flows efficiently.</li>
+            <li>Automating repetitive WhatsApp inquiries.</li>
+          </ul>
+          <a href="#" class="cta-full-video">WATCH FULL SESSION ON DRIVE</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
